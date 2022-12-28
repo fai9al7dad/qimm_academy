@@ -5,6 +5,14 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path=":id" element={<Student />} />
+      <Route
+        path="*"
+        element={
+          <div className="h-screen flex items-center justify-center text-white font-bold text-2xl">
+            الصفحة غير موجودة 😔
+          </div>
+        }
+      />
     </Routes>
   );
 }
