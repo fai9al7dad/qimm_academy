@@ -17,7 +17,7 @@ const Home = () => (
       <hr />
       <br />
       <br />
-      مثلا : http://localhost:3000/123456789
+      مثلا : https://qimm-academy.vercel.app/123456789
     </h1>
   </div>
 );
