@@ -35,8 +35,8 @@ export const BankCard = ({
     >
       <img src={imgUrl} />
       <div className="absolute z-50 w-full h-full ">
-        <div className="grid grid-cols-5  h-full ">
-          <div className=" flex flex-col  justify-between px-6 py-5 col-span-3">
+        <div className="grid grid-cols-6  h-full ">
+          <div className=" flex flex-col  justify-between pr-6 2xl:pr-10 py-5 col-span-4">
             <div className="text-sm  font-bold">مصرف قمم الدولي | الذهبية</div>
             <div className="text-md font-bold">
               {
@@ -58,7 +58,7 @@ export const BankCard = ({
               <div className="mt-2 text-md font-bold">{cardHolderName}</div>
             </div>
           </div>
-          <div className=" flex flex-col items-start justify-between pl-7 pr-4 pt-2 pb-5 col-span-2">
+          <div className=" flex flex-col items-start justify-between pl-7 pr-4 2xl:pl-12 pt-2 pb-5 col-span-2">
             <img src={QimmLogo} className="w-24" />
             <div>
               <div className="text-xs">الرصيد</div>
