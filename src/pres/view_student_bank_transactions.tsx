@@ -1,3 +1,4 @@
+import moment from "moment";
 import {
   TrendingDown,
   TrendingUp,
@@ -6,6 +7,55 @@ import {
 } from "../components/icons/hero_icons";
 import { Points, Student } from "../entities/student";
 import { bindClauseToPoint } from "../logic/bind_clause_to_point";
+
+moment.defineLocale("ar", {
+  months: [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "أبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ],
+  shortMonths: [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "أبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ],
+  weekdays: [
+    "الأحد",
+    "الاثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+  ],
+  shortWeekdays: ["أحد", "اثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"],
+  meridiem: (hour: number, minute: number, isLowercase: boolean) => {
+    if (hour < 12) {
+      return "ص";
+    } else {
+      return "م";
+    }
+  },
+});
+
 export const ViewStudentBankTransactions = ({
   student,
   className,
@@ -60,9 +110,9 @@ const TransactionItem = ({
     amountBgClass = "bg-red-500/20";
   }
   return (
-    <div className="bg-white lg:bg-white/10 lg:text-white rounded-lg py-4 px-5 flex items-center justify-between text-accent mb-2">
+    <div className="bg-white  lg:bg-white/10 lg:text-white rounded-lg py-4 px-5 flex items-center justify-between text-accent mb-2">
       <div>
-        <div className="text-[10px] bg-neutral-100 border border-neutral-200 px-3 py-0.5 mb-0.5 rounded-sm   w-fit">
+        <div className="text-[10px] bg-neutral-100 lg:bg-transparent lg:border-0 lg:px-0 border border-neutral-200 px-3 py-0.5 mb-0.5 rounded-sm   w-fit">
           {source === "team" ? (
             <UserGroup className={`h-3 w-3 inline-block `} />
           ) : (
@@ -73,13 +123,8 @@ const TransactionItem = ({
         </div>
         <div className="text-sm font-bold mb-1">{title}</div>
         <div className="text-xs">
-          {new Date(date).toLocaleDateString("ar-SA", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-          })}
+          {/* format date to locale string using moment.js */}
+          {moment(date).locale("ar").format("MMMM Do YYYY في h:mm:ss a")}
         </div>
       </div>
       <div className={`flex items-center ${amountTextClass}`}>

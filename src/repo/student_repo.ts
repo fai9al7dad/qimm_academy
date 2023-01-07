@@ -64,10 +64,11 @@ export class StudentRepo {
       cardNumber: record.card_number,
 
       created: record.created,
-      points: points,
+      points: points.sort((a, b) => {
+        return new Date(b.created).getTime() - new Date(a.created).getTime();
+      }),
       totalPoints: record.totalCredit == null ? 0 : record.totalCredit,
     });
-    console.log({ student });
 
     return student;
   }
