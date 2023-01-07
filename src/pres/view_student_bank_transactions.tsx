@@ -8,54 +8,6 @@ import {
 import { Points, Student } from "../entities/student";
 import { bindClauseToPoint } from "../logic/bind_clause_to_point";
 
-moment.defineLocale("ar", {
-  months: [
-    "يناير",
-    "فبراير",
-    "مارس",
-    "أبريل",
-    "مايو",
-    "يونيو",
-    "يوليو",
-    "أغسطس",
-    "سبتمبر",
-    "أكتوبر",
-    "نوفمبر",
-    "ديسمبر",
-  ],
-  shortMonths: [
-    "يناير",
-    "فبراير",
-    "مارس",
-    "أبريل",
-    "مايو",
-    "يونيو",
-    "يوليو",
-    "أغسطس",
-    "سبتمبر",
-    "أكتوبر",
-    "نوفمبر",
-    "ديسمبر",
-  ],
-  weekdays: [
-    "الأحد",
-    "الاثنين",
-    "الثلاثاء",
-    "الأربعاء",
-    "الخميس",
-    "الجمعة",
-    "السبت",
-  ],
-  shortWeekdays: ["أحد", "اثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"],
-  meridiem: (hour: number, minute: number, isLowercase: boolean) => {
-    if (hour < 12) {
-      return "ص";
-    } else {
-      return "م";
-    }
-  },
-});
-
 export const ViewStudentBankTransactions = ({
   student,
   className,
@@ -112,11 +64,11 @@ const TransactionItem = ({
   return (
     <div className="bg-white  lg:bg-white/10 lg:text-white rounded-lg py-4 px-5 flex items-center justify-between text-accent mb-2">
       <div>
-        <div className="text-[10px] bg-neutral-100 lg:bg-transparent lg:border-0 lg:px-0 border border-neutral-200 px-3 py-0.5 mb-0.5 rounded-sm   w-fit">
+        <div className="text-[10px] bg-neutral-100 lg:bg-transparent lg:border-0 lg:px-0 border border-neutral-200 px-2 py-0.5 mb-0.5 rounded-full   w-fit">
           {source === "team" ? (
-            <UserGroup className={`h-3 w-3 inline-block `} />
+            <UserGroup className={`h-[10px] w-[10px] inline-block `} />
           ) : (
-            <User className={`h-3 w-3 inline-block`} />
+            <User className={`h-[10px] w-[10px] inline-block`} />
           )}
           {/* {source === "team" ? "فريق" : "فردي"} */}
           <span></span>

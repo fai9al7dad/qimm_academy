@@ -1,5 +1,54 @@
 import { Routes, Route } from "react-router-dom";
 import Student from "./pages/student";
+import moment from "moment";
+
+moment.defineLocale("ar", {
+  months: [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "أبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ],
+  shortMonths: [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "أبريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "أغسطس",
+    "سبتمبر",
+    "أكتوبر",
+    "نوفمبر",
+    "ديسمبر",
+  ],
+  weekdays: [
+    "الأحد",
+    "الاثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+  ],
+  shortWeekdays: ["أحد", "اثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة", "سبت"],
+  meridiem: (hour: number, minute: number, isLowercase: boolean) => {
+    if (hour < 12) {
+      return "ص";
+    } else {
+      return "م";
+    }
+  },
+});
 
 function App() {
   return (
