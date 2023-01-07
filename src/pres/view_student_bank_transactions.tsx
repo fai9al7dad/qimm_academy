@@ -1,4 +1,9 @@
-import { TrendingDown, TrendingUp } from "../components/icons/hero_icons";
+import {
+  TrendingDown,
+  TrendingUp,
+  User,
+  UserGroup,
+} from "../components/icons/hero_icons";
 import { Points, Student } from "../entities/student";
 import { bindClauseToPoint } from "../logic/bind_clause_to_point";
 export const ViewStudentBankTransactions = ({
@@ -22,8 +27,10 @@ export const ViewStudentBankTransactions = ({
     >
       {student.points.map((point: Points) => (
         <TransactionItem
+          key={point.id}
           title={point.clauses}
           date={point.created}
+          source={point.source}
           amount={bindClauseToPoint(point.clauses)}
         />
       ))}
@@ -35,10 +42,12 @@ const TransactionItem = ({
   title,
   date,
   amount,
+  source,
 }: {
   title: string;
   date: string;
   amount: number;
+  source: string;
 }) => {
   const isPositive = amount > 0;
   let amountTextClass = "";
@@ -53,8 +62,25 @@ const TransactionItem = ({
   return (
     <div className="bg-white lg:bg-white/10 lg:text-white rounded-lg py-4 px-5 flex items-center justify-between text-accent mb-2">
       <div>
-        <div className="text-sm font-bold">{title}</div>
-        <div className="text-xs">{date}</div>
+        <div className="text-[10px] bg-neutral-100 border border-neutral-200 px-3 py-0.5 mb-0.5 rounded-sm   w-fit">
+          {source === "team" ? (
+            <UserGroup className={`h-3 w-3 inline-block `} />
+          ) : (
+            <User className={`h-3 w-3 inline-block`} />
+          )}
+          {/* {source === "team" ? "فريق" : "فردي"} */}
+          <span></span>
+        </div>
+        <div className="text-sm font-bold mb-1">{title}</div>
+        <div className="text-xs">
+          {new Date(date).toLocaleDateString("ar-SA", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          })}
+        </div>
       </div>
       <div className={`flex items-center ${amountTextClass}`}>
         <div>

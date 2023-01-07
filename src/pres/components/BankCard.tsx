@@ -15,9 +15,9 @@ export const BankCard = ({
   // based on the card balance, we can determine the card type
   let cardType: string = "silverCard";
   let imgUrl = "";
-  const goldCaldMin = 10000;
+  const goldCaldMin = 270000;
   const silverCardMin = 0;
-  const premiumCardMin = 100000;
+  const premiumCardMin = 630000;
   if (cardBalance > premiumCardMin) {
     cardType = "premiumCard";
     imgUrl = PremiumCard;
@@ -37,7 +37,17 @@ export const BankCard = ({
       <div className="absolute z-50 w-full h-full ">
         <div className="grid grid-cols-6  h-full ">
           <div className=" flex flex-col  justify-between pr-6 2xl:pr-10 py-5 col-span-4">
-            <div className="text-sm  font-bold">مصرف قمم الدولي | الذهبية</div>
+            <div className="text-sm  font-bold">
+              مصرف قمم الدولي |{" "}
+              {
+                // based on the card type, we can determine the card name
+                cardType === "goldCard"
+                  ? "بلاتيني"
+                  : cardType === "silverCard"
+                  ? "كلاسيك"
+                  : "سقنتشر"
+              }
+            </div>
             <div className="text-md font-bold">
               {
                 // card number is 16 digits, we need to split it into 4 groups of 4 digits separated by a dash

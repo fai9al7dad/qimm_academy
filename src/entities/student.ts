@@ -5,12 +5,14 @@ export class Points {
   collectionId: string;
   id: string;
   created: string;
+  source: string;
 
-  constructor({ clauses, collectionId, id, created }: Points) {
+  constructor({ clauses, collectionId, id, created, source }: Points) {
     this.clauses = clauses;
     this.collectionId = collectionId;
     this.id = id;
     this.created = created;
+    this.source = source;
   }
 }
 
