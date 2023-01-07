@@ -13,7 +13,7 @@ export const ViewStudentBankTransactions = ({
   student: Student;
   className?: string;
 }) => {
-  if (!student.points)
+  if (!student.points || student.points.length === 0)
     return (
       <div
         className={`bg-[#efefef] lg:bg-transparent min-h-[70vh] text-accent lg:text-white rounded-t-[33px] py-10 px-5 ${className}`}
